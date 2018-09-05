@@ -22,7 +22,7 @@ public class HelloService {
     * @ author: Administrator
     * @ Description: 加了断路器注解 ，当该service方法报错时，5秒调用20次就会触发fallbackMethod 指向的方法
     * @ params: [name]       
-    * @ date: 22:18 2018/9/4
+    * @ date: 22:39 2018/9/4
     * @ return: java.lang.String
     **/        
     @HystrixCommand(fallbackMethod = "helloError")
