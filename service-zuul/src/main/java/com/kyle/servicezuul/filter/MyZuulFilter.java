@@ -20,26 +20,48 @@ import javax.servlet.http.HttpServletRequest;
 @Component
 public class MyZuulFilter extends ZuulFilter {
     private static Logger log = LoggerFactory.getLogger(MyZuulFilter.class);
+
+    /**
+     * zuul定义了4种不同生命周期的过滤器类型
+     * pre：路由之前
+     * routing：路由之时
+     * post： 路由之后
+     * error：发送错误调用
+     * @return
+     */
     @Override
     public String filterType() {
-        return "pro";
+        return "pre";
     }
 
+    /**
+     * 过滤顺序
+     * @return
+     */
     @Override
     public int filterOrder() {
         return 0;
     }
 
+    /**
+     * 是否需要过滤
+     * @return
+     */
     @Override
     public boolean shouldFilter() {
         return true;
     }
 
+    /**
+     * 过滤的具体业务逻辑
+     * @return
+     * @throws ZuulException
+     */
     @Override
     public Object run() throws ZuulException {
         RequestContext currentContext = RequestContext.getCurrentContext();
         HttpServletRequest request = currentContext.getRequest();
-        log.info("%s >>> s%",request.getMethod(),request.getRequestURI().toString());
+        log.info("%s >>> s%",request.getMethod(),request.getRequestURI());
         String token = request.getParameter("token");
         if (StringUtils.isEmpty(token)) {
             log.warn("token is empty");
@@ -48,6 +70,7 @@ public class MyZuulFilter extends ZuulFilter {
             try {
                 currentContext.getResponse().getWriter().write("token is empty");
             } catch (Exception e) {
+                log.error("zuulFilter error {}", e.getMessage());
             }
             return null;
         }

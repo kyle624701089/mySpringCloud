@@ -9,9 +9,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-@SpringBootApplication
+@SpringBootApplication(scanBasePackages = {"com.kyle"})
 @EnableEurekaClient
-@RestController
 public class ServiceHiApplication {
 
     public static void main(String[] args) {
@@ -23,9 +22,4 @@ public class ServiceHiApplication {
      */
     @Value("${server.port}")
     String port;
-
-    @RequestMapping("/hi")
-    public String helloWorld(@RequestParam(value = "name",defaultValue = "kyle")String name) {
-        return "hi " + name + "! ,i`m from port " + port;
-    }
 }

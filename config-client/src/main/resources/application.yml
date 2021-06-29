@@ -1,0 +1,22 @@
+spring:
+  application:
+    name: config-client
+  cloud:
+    config:
+#      仓库分支
+      label: master
+#      环境变量 dev：开发环境，test：测试环境，pro：生产环境
+      profile: dev
+#      配置中心服务端地址
+      uri: http://localhost:8888/
+      discovery:
+#        开启从配置中心读取配置
+        enabled: true
+#        通过配置中心服务端在eureka中的服务名调用
+        service-id: confi-server
+server:
+  port: 8881
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8080/eureka

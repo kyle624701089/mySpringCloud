@@ -7,6 +7,7 @@ eureka:
   client:
     service-url:
       defaultZone: http://localhost:8080/eureka
+#      配置路由策略
 zuul:
   routes:
     api-a:

@@ -7,7 +7,7 @@ eureka:
   client:
     service-url:
       defaultZone: http://localhost:8080/eureka
-# ¿ªÆô¶ÏÂ·Æ÷
+#      å¼€å¯ç†”æ–­å™¨
 feign:
   hystrix:
     enabled: true

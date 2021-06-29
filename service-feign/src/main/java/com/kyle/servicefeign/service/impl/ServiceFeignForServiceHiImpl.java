@@ -10,10 +10,10 @@ import org.springframework.stereotype.Component;
  * @ date: 2018/9/4 22:27
  * @ version: 1.0
  **/
-@Component
+/*@Component
 public class ServiceFeignForServiceHiImpl implements ServiceFeignForServiceHi {
     @Override
     public String getMsgFromServiceHi(String name) {
         return "hi " + name + " ! This is the error message from feignServiceHi";
     }
-}
+}*/
